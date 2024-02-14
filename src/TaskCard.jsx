@@ -3,8 +3,8 @@ function generateCard(task){
     return <div className="h-40 w-64 p-4 rounded-md bg-white shadow-2xl">
         <ol className="list-none">
             <li>{task.name}</li>
-            <li>{task.start}</li>
-            <li>{task.deadline}</li>
+            <li>{"Start Date: "+task.startdate}</li>
+            <li>{"Deadline: "+task.deadline}</li>
         </ol>
     </div>;
 }

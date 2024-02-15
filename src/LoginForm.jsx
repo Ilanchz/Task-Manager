@@ -5,7 +5,7 @@ function LoginForm(props){
     const tasks=props.tasks;
     const setTask=props.setTask;
 
-    const name=props.name;
+    //const name=props.name;
     const setName=props.setName;
     
     function SignUpForm(event){
@@ -29,7 +29,6 @@ function LoginForm(props){
         if (!response.ok) {
             alert("Wrong Password!");
         }else{
-            console.log(" Hello bvgdfnghfd");
             console.log(responseData.tasks);
             setTask(responseData.tasks);
             console.log(tasks);

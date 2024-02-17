@@ -1,4 +1,4 @@
-const uri = "mongodb+srv://ilanpariv66:Ilanchezhiyan%402004@cluster0.uv5o8qk.mongodb.net/task-database?retryWrites=true&w=majority";
+const uri = process.env.REACT_APP_URI;
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -63,7 +63,6 @@ app.get('/api/deletedata/:username/:taskindex', async (req, res) => {
     const user = await TaskData.findOne({ username: username });
 
     if (user) {
-      console.log(user)
       const tasks = user.data;
 
       if (tasks && tasks.length > 0) {
@@ -98,7 +97,6 @@ app.get('/api/updatedata/:username/:taskindex', async (req, res) => {
     const user = await TaskData.findOne({ username: username });
 
     if (user) {
-      console.log(user)
       const tasks = user.data;
 
       if (tasks && tasks.length > 0) {
@@ -135,7 +133,6 @@ app.post('/api/users', async (req, res) => {
     // Check if the user already exists
     const existingUser = await TaskData.findOne({ username: username });
     if (existingUser){
-      console.log('User already exists');
       return res.status(400).json({ error: 'User already exists' });
     }
     const taskData = new TaskData({
@@ -146,7 +143,6 @@ app.post('/api/users', async (req, res) => {
 
     await taskData.save();
 
-    console.log('Data added to MongoDB:', taskData);
     res.status(201).json({ message: 'User created successfully', user: taskData });
   } catch (error) {
     console.error('Error adding data to MongoDB:', error);

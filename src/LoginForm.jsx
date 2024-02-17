@@ -29,15 +29,12 @@ function LoginForm(props){
         if (!response.ok) {
             alert("Wrong Password!");
         }else{
-            console.log(responseData.tasks);
             setTask(responseData.tasks);
-            console.log(tasks);
             setName(username);
             closeLoginPage();
 
         }
         
-        console.log('User data:', responseData);
         
         } catch (error) {
         console.error('Error fetching user data:', error.message);
@@ -66,9 +63,7 @@ function LoginForm(props){
                 setName(username);   
                 alert("Created New User!");
             }
-            console.log(response.data);
         }catch(Error){
-            console.log("Signup Error: "+Error);
         }
         document.querySelector("#signup-username").value="";
         document.querySelector('#signup-password').value="";
@@ -110,7 +105,7 @@ function LoginForm(props){
                 
                 <div className="flex flex-col items-center justify-center shadow-2xl h-96 w-96 p-1 bg-slate-700 rounded-lg border-2 border-red-600">
             
-                    <h2 className="text-white font-semibold font-mono bg-slate-800 rounded-lg m-2 p-1">Login to Task-Manager</h2>
+                    <h2 className="text-white font-semibold font-mono bg-slate-800 rounded-lg m-2 p-1">Grand Line Manager</h2>
                     <br/>
 
                     <label for="username" className="text-white">Username</label>

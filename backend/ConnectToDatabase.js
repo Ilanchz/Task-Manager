@@ -29,7 +29,7 @@ mongoose.connect(uri, {
 const taskDataSchema = new mongoose.Schema({
   username: String,
   password: String,
-  data: [{ name: String, startdate: String, deadline: String }],
+  data: [{ name: String, startdate: String, deadline: String, status: String}],
 });
 
 const TaskData = mongoose.model('task-collection', taskDataSchema);
@@ -40,15 +40,86 @@ app.get('/api/taskdata/:username/:password', async (req, res) => {
   const { username,password } = req.params;
   try {
     const user = await TaskData.findOne({ username: username });
-    if (user.password===password){
-      if (user) {
+    if (user){
+      if (user.password===password) {
         res.status(200).json({ tasks: user.data});
       } else {
-        res.status(404).json({ error: 'User not found' });
+        res.status(401).json({error:"Unauthorised"});
       }
+    }else{
+      res.status(404).json({ error: 'User not found' });
+      
     }
-    else{
-      res.status(401).json({error:"Unauthorised"});
+  } catch (error) {
+    console.error('Error fetching tasks:', error);
+    res.status(500).json({ error: 'Failed to fetch tasks' });
+  }
+});
+
+app.get('/api/deletedata/:username/:taskindex', async (req, res) => {
+  const { username, taskindex } = req.params;
+
+  try {
+    const user = await TaskData.findOne({ username: username });
+
+    if (user) {
+      console.log(user)
+      const tasks = user.data;
+
+      if (tasks && tasks.length > 0) {
+        if (taskindex >= 0 && taskindex < tasks.length) {
+          // Splice the task from the data array
+          const poppedTask = tasks.splice(taskindex, 1);
+
+          // Update only the data field and save the user
+          user.data = tasks;
+          await user.save();
+
+          // Respond with the updated tasks array
+          res.status(200).json({ tasks: user.data });
+        } else {
+          res.status(400).json({ error: 'Invalid task index' });
+        }
+      } else {
+        res.status(404).json({ error: 'No tasks found for the user' });
+      }
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching tasks:', error);
+    res.status(500).json({ error: 'Failed to fetch tasks' });
+  }
+});
+
+app.get('/api/updatedata/:username/:taskindex', async (req, res) => {
+  const { username, taskindex } = req.params;
+  try {
+    const user = await TaskData.findOne({ username: username });
+
+    if (user) {
+      console.log(user)
+      const tasks = user.data;
+
+      if (tasks && tasks.length > 0) {
+        if (taskindex >= 0 && taskindex < tasks.length) {
+          // Splice the task from the data array
+          tasks[taskindex].status="completed";
+
+          // Update only the data field and save the user
+          user.data = tasks;
+          await user.save();
+
+          // Respond with the updated tasks array
+          res.status(200).json({ tasks: user.data });
+        } else {
+          res.status(400).json({ error: 'Invalid task index' });
+        }
+      } else {
+        res.status(404).json({ error: 'No tasks found for the user' });
+      }
+    } else {
+      res.status(404).json({ error: 'User not found' });
     }
   } catch (error) {
     console.error('Error fetching tasks:', error);
@@ -63,11 +134,10 @@ app.post('/api/users', async (req, res) => {
   try {
     // Check if the user already exists
     const existingUser = await TaskData.findOne({ username: username });
-    if (existingUser) {
+    if (existingUser){
       console.log('User already exists');
       return res.status(400).json({ error: 'User already exists' });
     }
-
     const taskData = new TaskData({
       username: username,
       password: password,

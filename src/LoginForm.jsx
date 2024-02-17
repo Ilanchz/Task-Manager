@@ -33,15 +33,17 @@ function LoginForm(props){
             setTask(responseData.tasks);
             console.log(tasks);
             setName(username);
+            closeLoginPage();
+
         }
-    
         
         console.log('User data:', responseData);
-        closeLoginPage();
         
         } catch (error) {
         console.error('Error fetching user data:', error.message);
         }
+        document.querySelector("#login-username").value="";
+        document.querySelector("#login-password").value="";
     }
     
 
@@ -65,10 +67,11 @@ function LoginForm(props){
                 alert("Created New User!");
             }
             console.log(response.data);
-            closeLoginPage();
         }catch(Error){
             console.log("Signup Error: "+Error);
         }
+        document.querySelector("#signup-username").value="";
+        document.querySelector('#signup-password').value="";
         
     }
 
@@ -80,45 +83,50 @@ function LoginForm(props){
 
 
 
-    return <div id="login-form" className="hidden fixed top-0 left-0 w-full h-full z-10 bg-slate-400">
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2">
+    return <div id="login-form" className="fixed top-0 left-0 w-full h-full z-10 bg-slate-400">
+
+                <div id="signup-form" className="hidden fixed top-0 left-0 w-full h-full z-10 bg-slate-400">
+                    <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2">
+                        <div className="flex flex-col items-center justify-center shadow-2xl h-96 w-96 bg-slate-700 rounded-lg border-2 border-red-600">
+                            
+                            <h2 className="text-white font-semibold font-mono bg-slate-800 rounded-lg m-2 p-1">Register new account</h2>
+                            <br/>
+                            
+                            <label for="username" className="text-white">Username</label>
+                            <input type="text" id="signup-username" className="w-60 h-8 text-lg text-center"></input>
+                            <br/>
+                            <label for="password" className="text-white">Password</label>
+                            <input type="password" id="signup-password" className="w-60 h-8 text-lg text-center"></input>
+                            <br/>
+                            <button className="bg-red-400 rounded-md p-2 m-2 w-20 text-black hover:bg-red-100" onClick={triggerSignUp}>Sign-Up</button>
+                            <button className="w-40 underline text-yellow-400 hover:text-white" onClick={SignUpForm}>Already have a login</button>
+                        </div>
             
-            <div className="flex flex-col items-center justify-center shadow-2xl h-96 w-96 p-1 bg-slate-700 rounded-lg">
-            <div className="self-end">
-                <button className="bg-red-500 p-2 m-2 text-white rounded-xl" onClick={closeLoginPage}>Back</button>
+                    </div>
+            
+                </div>
+
+            <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2" >
+                
+                <div className="flex flex-col items-center justify-center shadow-2xl h-96 w-96 p-1 bg-slate-700 rounded-lg border-2 border-red-600">
+            
+                    <h2 className="text-white font-semibold font-mono bg-slate-800 rounded-lg m-2 p-1">Login to Task-Manager</h2>
+                    <br/>
+
+                    <label for="username" className="text-white">Username</label>
+                    <input type="text" id="login-username" className="w-60 h-8 text-lg text-center"></input>
+                    <br/>
+                    <label for="password" className="text-white">Password</label>
+                    <input type="password" id="login-password" className="w-60 h-8 text-lg text-center"></input>
+                    <br/>
+                    <button className="bg-green-400 rounded-md p-2 m-2 w-16 text-black hover:bg-green-100" onClick={triggerLogin}>Login</button>
+                    <button className="w-16 underline text-yellow-400 hover:text-white" onClick={SignUpForm}>Sign-up</button>
+                </div>
+                
             </div>
-            <label for="username" className="text-white">Username</label>
-            <input type="text" id="login-username" className="w-60 h-8 text-lg text-center"></input>
-            <br/>
-            <label for="password" className="text-white">Password</label>
-            <input type="password" id="login-password" className="w-60 h-8 text-lg text-center"></input>
-            <br/>
-            <button className="bg-green-400 rounded-md p-2 m-2 w-16 text-black hover:bg-green-100" onClick={triggerLogin}>Login</button>
-            <button className="w-16 underline text-yellow-400 hover:text-white" onClick={SignUpForm}>Sign-up</button>
-            </div>
-            
-            
+                
         
         </div>
-        
-        <div id="signup-form" className="hidden fixed top-0 left-0 w-full h-full z-10 bg-slate-400">
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2">
-            <div className="flex flex-col items-center justify-center shadow-2xl h-96 w-96 bg-slate-700 rounded-lg">
-            <label for="username" className="text-white">Username</label>
-            <input type="text" id="signup-username" className="w-60 h-8 text-lg text-center"></input>
-            <br/>
-            <label for="password" className="text-white">Password</label>
-            <input type="password" id="signup-password" className="w-60 h-8 text-lg text-center"></input>
-            <br/>
-            <button className="bg-red-400 rounded-md p-2 m-2 w-20 text-black hover:bg-red-100" onClick={triggerSignUp}>Sign-Up</button>
-            <button className="w-40 underline text-yellow-400 hover:text-white" onClick={SignUpForm}>Already have a login</button>
-            </div>
-        
-        </div>
-        
-        </div>
-        
-    </div>
 
 }
 export default LoginForm;

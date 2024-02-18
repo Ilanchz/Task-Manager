@@ -18,10 +18,12 @@ Task Manager is a web application that helps you manage your tasks. It is built 
 The current project is live at
 
 
-## Technologies Used
+## Technologies Used 
 
-- React
-- Tailwind CSS
+![React Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/40px-React-icon.svg.png)
+
+- React 
+- Tailwind CSS 
 - MongoDB
 
 ## Getting Started

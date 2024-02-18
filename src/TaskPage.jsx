@@ -1,7 +1,7 @@
 
 import GreetingsPage from "./GreetingsPage";
 import TaskCard from "./TaskCard";
-
+const url=process.env.REACT_APP_URL;
 
 function TaskPage(props){
 
@@ -26,7 +26,7 @@ function TaskPage(props){
                 if (tname!=="" && sdate!=="" && deadline!==""){
                         if (name !== "") {
                                 // Update tasks in atlas
-                                await fetch(`http://localhost:5000/api/pushNewTask/${name}`, {
+                                await fetch(`${url}api/pushNewTask/${name}`, {
                                   method: 'POST',
                                   headers: {
                                     'Content-Type': 'application/json',

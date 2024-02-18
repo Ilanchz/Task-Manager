@@ -1,4 +1,4 @@
-
+const url = process.env.REACT_APP_URL;
 
 function LoginForm(props){
 
@@ -19,7 +19,7 @@ function LoginForm(props){
         const password = document.querySelector("#login-password").value;
     
         try {
-        const response = await fetch(`http://localhost:5000/api/taskdata/${username}/${password}`, {
+        const response = await fetch(`${url}api/taskdata/${username}/${password}`, {
             method: 'GET',
             headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ function LoginForm(props){
         const data=[];
         const userData={username,password,data};
         try{
-            const response = await fetch('http://localhost:5000/api/users', {
+            const response = await fetch(`${url}api/users`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',

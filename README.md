@@ -21,7 +21,7 @@ The current project is live at
 ## Technologies Used
 
 - React ![React Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/40px-React-icon.svg.png)
-- Tailwind CSS ![Tailwind CSS Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/React.svg/40px-React.svg.png)
+- Tailwind CSS ![Tailwind CSS Logo](https://image.pngaaa.com/779/6447779-middle.png)
 - MongoDB ![MongoDB Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Mongodb_logo.png/40px-Mongodb_logo.png)
 
 ## Getting Started

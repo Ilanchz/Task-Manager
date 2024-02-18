@@ -40,5 +40,5 @@ Make sure you have the following installed:
 
 1. Clone the repository
 
-git clone https://github.com/your-username/task-manager.git
+git clone https://github.com/Ilanchz/Task-Manager.git
 cd task-manager

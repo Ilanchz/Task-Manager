@@ -7,7 +7,7 @@ function TaskCard(props){
     const setCurrentTask=props.setCurrentTask;
 
     async function deleteCard(event){
-        const card_index=event.target.value;
+        const card_index=event.currentTarget.value;
         const response = await fetch(`${url}api/deletedata/${name}/${card_index}`, {
             method: 'GET',
             headers: {
@@ -22,17 +22,15 @@ function TaskCard(props){
     }
 
     async function updateCardStatus(event){
-        const card_index=event.target.value;
+        const card_index=event.currentTarget.value;
         const response = await fetch(`${url}api/updatedata/${name}/${card_index}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
             },
         });
-        console.log(response);
         if (response.ok){
             const updatedTasks=[...tasks];
-            console.log(updatedTasks);
             for (let i=0;i<updatedTasks.length;i++){
                 if (i==card_index){
                     updatedTasks[i].status="completed";

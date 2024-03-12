@@ -28,8 +28,8 @@ function NavigationBar(props) {
     }
 
     return (
-        <div className="sticky top-0 ">
-        <div id="navigation-top-bar" className="flex w-full bg-blue-500 p-4 rounded-b-md span backdrop-blur">
+        <div className="sticky top-0">
+        <div id="navigation-top-bar" className="flex w-full bg-blue-700 p-4 rounded-b-md span backdrop-blur bg-opacity-70">
             <div className="text-xl font-mono text-white p-2 m-1">
 
 
@@ -54,7 +54,7 @@ function NavigationBar(props) {
         <div id="navigation-bottom-bar" className="hidden md:hidden">
             <div className="flex flex-col justify-center bg-gray-500 text-white">
             <button type="button" value="all" className="sticky p-3 w-full my-0.5 rounded-xl bg-zinc-500 text-white border-2 hover:bg-zinc-400 focus: transform active:scale-x-75 transition-transform" onClick={displayAll}>All</button>
-            <button type="button" value="pending" className="sticky p-3 w-full my-0.5 rounded-xl bg-red-500 text-white border-2 hover:bg-red-400 focus: transform active:scale-x-75 transition-transform" onClick={displayPending}>Pending</button>
+            <button type="button" value="pending" className="sticky p-3 w-full my-0.5 rounded-xl bg-red-500 text-white border-2 hover:bg-red-400 focus: transform active:scale-x-75 transition-transform" onClick={displayPending}>Pending </button>
             <button type="button" value="completed" className="sticky p-3 w-full my-0.5 rounded-xl bg-green-600 text-white border-2 hover:bg-green-500 focus: transform active:scale-x-75 transition-transform" onClick={displayCompleted}>Completed</button>
             <button type="button" value="stats" className="sticky p-3 w-full my-0.5 rounded-xl bg-gray-600 text-white border-2 hover:bg-gray-500 focus: transform active:scale-x-75 transition-transform">Stats</button>
             <button id="login-button"  className="text-xl font-mono text-white p-2 m-8 bg-red-400 rounded-lg" onClick={openLoginForm}>LogOut</button>

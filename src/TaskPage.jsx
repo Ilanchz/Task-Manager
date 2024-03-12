@@ -59,8 +59,8 @@ function TaskPage(props){
   
   </button>
         </div>
-        <div id="task-form-div" className="hidden">
-                <div className="flex flex-col w-1/2 m-4 p-4 shadow-2xl bg-blue-200">
+        <div id="task-form-div" className="hidden m-10">
+                <div className="flex flex-col w-full sm:w-3/5 m-4 p-4 shadow-2xl bg-blue-200 rounded-xl">
                     <label for="tname">Task Name: </label>    
                     <textarea id="tname" name="tname" row="2" cols="20" required></textarea>
 

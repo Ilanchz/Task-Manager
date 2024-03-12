@@ -1,6 +1,10 @@
 # Task Manager
 
-Task Manager is a web application that helps you manage your tasks. It is built with React for the frontend, Tailwind CSS for styling, and MongoDB for backend calls. The data generated is plain text and encryptions have to be introduced such as MD5 hashing for more security.
+Task Manager is a web application that helps you manage your tasks. It is built with React and Tailwind CSS. MongoDB document is used to maintain the data. The data generated is plain text and encryptions have to be introduced such as hashing for more security.
+
+## Demo
+
+The current project is live at (https://grand-line-manager.onrender.com/)
 
 # Things To be Done
 
@@ -12,10 +16,6 @@ Task Manager is a web application that helps you manage your tasks. It is built 
 - Add and delete tasks
 - Mark tasks as completed
 - Filter tasks by status (pending/completed/All)
-
-## Demo
-
-The current project is live at
 
 
 ## Technologies Used 
